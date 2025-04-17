@@ -117,8 +117,8 @@ return(
 
 
 
-<img onClick={()=>edittasts(todo.id)}  className='w-[35px] h-[35px] ' src="src\assets\edit_note_24dp_FBC017_FILL0_wght400_GRAD0_opsz24.png" alt="" />
-<img onClick={()=>deletetodo(todo.id)} className='w-[30px] h-[30px] ' src="src\assets\delete_24dp_DA3946_FILL0_wght400_GRAD0_opsz24.png" alt="" />
+<img onClick={()=>edittasts(todo.id)}  className='w-[35px] h-[35px] ' src="dist\assets\edit_note_24dp_FBC017_FILL0_wght400_GRAD0_opsz24.png" alt="" />
+<img onClick={()=>deletetodo(todo.id)} className='w-[30px] h-[30px] ' src="dist\assets\delete_24dp_DA3946_FILL0_wght400_GRAD0_opsz24.png" alt="" />
 
 </div>
 
