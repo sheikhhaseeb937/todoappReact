@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import edit from '../assets/edit_note_24dp_FBC017_FILL0_wght400_GRAD0_opsz24.png';
+import deleteimg from  '../assets/delete_24dp_DA3946_FILL0_wght400_GRAD0_opsz24.png';
 
 
 
@@ -7,7 +9,8 @@ const Todoapp = () => {
 const [items, setItems] = useState('')
 const [tasts, setTasts] = useState([])
 const [editid, setEditid] = useState(null)
-
+// const [btn, setBtn] = useState(false)
+const [newvalue, setNewvalue] = useState("")
 
 function addtast(){
   if (items === ""){
@@ -20,19 +23,7 @@ alert("todo required")
   setTasts([...tasts,{value:items,status:false,id:Date.now()}])
 
 
-  if(editid){
-
-const newtodo = items;
-console.log(newtodo)
-setItems({...tasts,newtodo})
-// newtodo[items] = tasts;
-// setTasts(newtodo);
-// setEditid(null)
-
-    
-  }else{
-// setTasts([...tasts,items])
-  }
+ 
 
 
 
@@ -73,6 +64,22 @@ setTasts(tasts.filter(tast => tast.id !== id))
 
 }
 
+function setnewitems(){
+// console.log("run")
+const newvalue = tasts.filter((value)=>{
+// console.log(value.id)
+// console.log(editid)
+// setNewvalue(items)
+// console.log(newvalue)
+editid === value.id ?setTasts([{...tasts,value:items}]):value
+setItems("")
+setEditid(null)
+})
+
+
+
+}
+
 function edittasts(id){
 
 setEditid(id)
@@ -91,8 +98,12 @@ editid !== null ? setItems(todo.value) :todo
     <div className=' rounded-md flex justify-around flex-col items-center border-[1px] border-gray-300 max-w-[80%] h-[120px] mx-auto'>
 
 <input value={items}  onChange={(e)=>inputchange(e.target.value)} className=' rounded-md w-[95%] h-[40%] border-2 border-gray-400 p-4 outline-none' type="text" name="" id="" placeholder='New Todo' />
-<button onClick={addtast}  className='rounded-md bg-[#16a3b7] text-white font-bold w-[95%] h-[40%] hover:bg-[#87d9e1] hover:duration-500 outline-none '>
-  {editid !== null ? "Update":"Add a Tast"}
+<button onClick={()=>{
+  // setBtn(addtast)
+
+  editid !== null ?`${setnewitems()}`:`${addtast()}`
+}}  className='rounded-md bg-[#16a3b7] text-white font-bold w-[95%] h-[40%] hover:bg-[#87d9e1] hover:duration-500 outline-none '>
+Add
 </button>
 
     </div>
@@ -117,8 +128,8 @@ return(
 
 
 
-<img onClick={()=>edittasts(todo.id)}  className='w-[35px] h-[35px] ' src="dist\assets\edit_note_24dp_FBC017_FILL0_wght400_GRAD0_opsz24.png" alt="" />
-<img onClick={()=>deletetodo(todo.id)} className='w-[30px] h-[30px] ' src="dist\assets\delete_24dp_DA3946_FILL0_wght400_GRAD0_opsz24.png" alt="" />
+<img onClick={()=>edittasts(todo.id)}  className='w-[35px] h-[35px] ' src={edit} alt="" />
+<img onClick={()=>deletetodo(todo.id)} className='w-[30px] h-[30px] ' src={deleteimg} alt="" />
 
 </div>
 
