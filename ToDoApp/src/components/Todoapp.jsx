@@ -10,7 +10,7 @@ const [items, setItems] = useState('')
 const [tasts, setTasts] = useState([])
 const [editid, setEditid] = useState(null)
 // const [btn, setBtn] = useState(false)
-const [newvalue, setNewvalue] = useState("")
+// const [newvalue, setNewvalue] = useState("")
 
 function addtast(){
   if (items === ""){
@@ -67,10 +67,7 @@ setTasts(tasts.filter(tast => tast.id !== id))
 function setnewitems(){
 // console.log("run")
 const newvalue = tasts.filter((value)=>{
-// console.log(value.id)
-// console.log(editid)
-// setNewvalue(items)
-// console.log(newvalue)
+
 editid === value.id ?setTasts([{...tasts,value:items}]):value
 setItems("")
 setEditid(null)
@@ -103,7 +100,7 @@ editid !== null ? setItems(todo.value) :todo
 
   editid !== null ?`${setnewitems()}`:`${addtast()}`
 }}  className='rounded-md bg-[#16a3b7] text-white font-bold w-[95%] h-[40%] hover:bg-[#87d9e1] hover:duration-500 outline-none '>
-Add
+{editid !== null? "Update":"Add Tasts"}
 </button>
 
     </div>
